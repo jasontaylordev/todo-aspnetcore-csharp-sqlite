@@ -15,6 +15,11 @@ steps:
   - task: setup-azd@0 
     displayName: Install azd
 
+  - task: UseDotNet@2
+    displayName: Install .NET SDK
+    inputs:
+      useGlobalJson: true
+
   - pwsh: |
       $info = $Env:AZURE_CREDENTIALS | ConvertFrom-Json -AsHashtable;
       
