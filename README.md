@@ -21,7 +21,7 @@ This quickstart will show you how to authenticate on Azure, initialize using a t
 azd auth login
 
 # First-time project setup. Initialize a project in the current directory, using this template. 
-azd init --template https://github.com/jasontaylordev/todo-aspnetcore-csharp-sqlite
+azd init --template jasontaylordev/todo-aspnetcore-csharp-sqlite
 
 # Provision and deploy to Azure
 azd up
