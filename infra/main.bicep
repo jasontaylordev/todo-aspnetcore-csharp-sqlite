@@ -52,7 +52,19 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 // A full example that leverages azd bicep modules can be seen in the todo-python-mongo template:
 // https://github.com/Azure-Samples/todo-python-mongo/tree/main/infra
 
-
+module web 'app.bicep' = {
+  name: '${deployment().name}-app'
+  scope: rg
+  params: {
+    location: location
+    tags: tags
+    logAnalyticsName: '${abbrs.operationalInsightsWorkspaces}${resourceToken}'
+    applicationInsightsName: '${abbrs.insightsComponents}${resourceToken}'
+    applicationInsightsDashboardName: '${abbrs.portalDashboards}${resourceToken}'
+    appServicePlanName: '${abbrs.webServerFarms}${resourceToken}'
+    appServiceName: '${abbrs.webSitesAppService}${resourceToken}'
+  }
+}
 
 // Add outputs from the deployment here, if needed.
 //
